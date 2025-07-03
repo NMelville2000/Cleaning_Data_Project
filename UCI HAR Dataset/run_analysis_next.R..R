@@ -11,20 +11,19 @@ getwd()
 
 
 ###FEATURES AND ACTIVITY LABELS
-features <- read.table("getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/features.txt", col.names = c("Codes", "featuresList"))
-activities <- read.table("getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/activity_labels.txt", col.names = c("Id", "activity_names"))
-View(Y_test)
+features <- read.table("Cleaning_Data_Project/UCI HAR Dataset/features.txt", col.names = c("Codes", "featuresList"))
+activities <- read.table("Cleaning_Data_Project/UCI HAR Dataset/activity_labels.txt", col.names = c("Id", "activity_names"))
 
 
 ###TEST FOLDER
-test_subject <- read.table("getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/test/subject_test.txt", col.names = c("subjects"))
-X_test <- read.table("getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/test/X_test.txt", col.names = features$featuresList)
-Y_test <- read.table("getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/test/y_test.txt", col.names = c("activity"))
+test_subject <- read.table("Cleaning_Data_Project/UCI HAR Dataset/test/subject_test.txt", col.names = c("subjects"))
+X_test <- read.table("Cleaning_Data_Project/UCI HAR Dataset/test/X_test.txt", col.names = features$featuresList)
+Y_test <- read.table("Cleaning_Data_Project/UCI HAR Dataset/test/y_test.txt", col.names = c("activity"))
 
 ###TRAIN FOLDER
-train_subject <- read.table("getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/train/subject_train.txt", col.names = c("subjects"))
-X_train <- read.table("getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/train/X_train.txt", col.names = features$featuresList)
-y_train <- read.table("getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/train/y_train.txt", col.names = c("activity"))
+train_subject <- read.table("Cleaning_Data_Project/UCI HAR Dataset/train/subject_train.txt", col.names = c("subjects"))
+X_train <- read.table("Cleaning_Data_Project/UCI HAR Dataset/train/X_train.txt", col.names = features$featuresList)
+y_train <- read.table("Cleaning_Data_Project/UCI HAR Dataset/train/y_train.txt", col.names = c("activity"))
 
 
 #Row bind files first
@@ -62,8 +61,11 @@ tidy_data <- extracted_data %>%
         group_by(subjects, activity) %>%
         summarise_all(list(mean))
                 
+View(tidy_data) 
 
-View(tidy_data)        
+###Creating a text file from the following code.
+write.table(tidy_data, row.names = FALSE) 
+       
 
 
 
