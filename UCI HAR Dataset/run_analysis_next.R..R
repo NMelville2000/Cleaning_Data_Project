@@ -7,7 +7,7 @@ getwd()
 
 #Read all files individually into R
 #Rename columns in each file
-#Rbind then cbind files into
+#Rbind then cbind files into one dataset
 
 
 ###FEATURES AND ACTIVITY LABELS
